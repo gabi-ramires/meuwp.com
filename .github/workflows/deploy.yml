@@ -32,3 +32,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ # Pasta gerada pelo build do Vue
         server-dir: ./public_html/ # Pasta remota no servidor FTP
+        dangerous-clean-slate: true
