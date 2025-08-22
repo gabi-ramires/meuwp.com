@@ -5,116 +5,142 @@ import {
   Zap,
   Mail,
   Smartphone,
-  MousePointerClick,
-  Palette,
-  Rocket,
+  Users,
+  Award,
+  Clock,
   Check,
   Quote,
   Star,
-  MessageCircle,
+  ArrowRight,
+  Globe,
+  Heart,
 } from "lucide-vue-next";
 
-// Features
-const features = [
-  { icon: Shield, label: "SSL grátis" },
-  { icon: Zap, label: "Backup diário" },
-  { icon: Mail, label: "E-mail profissional" },
-  { icon: Smartphone, label: "Site responsivo" },
+// Função para scroll suave personalizada
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const targetPosition = element.offsetTop - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 800;
+    let start = null;
+
+    function animation(currentTime) {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  }
+};
+
+// Estatísticas da empresa
+const stats = [
+  { number: "500+", label: "Sites criados" },
+  { number: "98%", label: "Clientes satisfeitos" },
+  { number: "5min", label: "Tempo médio de criação" },
+  { number: "24/7", label: "Suporte disponível" },
 ];
 
-// Steps
-const steps = [
+// Valores da empresa
+const values = [
   {
-    icon: MousePointerClick,
-    title: "Crie sua conta",
-    text: "Leva menos de 1 minuto. Sem cartão no teste grátis.",
+    icon: Heart,
+    title: "Simplicidade",
+    description: "Acreditamos que criar um site deve ser simples e acessível para todos."
   },
   {
-    icon: Palette,
-    title: "Escolha um modelo",
-    text: "Templates por profissão: psicólogo, advogado, clínica, loja e mais.",
+    icon: Shield,
+    title: "Confiabilidade",
+    description: "Sites seguros, rápidos e sempre online para seu negócio."
   },
   {
-    icon: Rocket,
-    title: "Publique em minutos",
-    text: "Sem cPanel, sem tecniquês. A gente cuida de tudo pra você.",
-  },
-];
-
-// Planos
-const plans = [
-  {
-    name: "Básico",
-    price: "R$ 15/mês",
-    tag: "Para começar",
-    cta: "Começar grátis",
-    perks: [
-      "1 site WordPress pronto",
-      "1 e-mail profissional",
-      "SSL + Backup automático",
-      "Suporte por WhatsApp",
-    ],
+    icon: Users,
+    title: "Foco no Cliente",
+    description: "Cada decisão é tomada pensando na experiência do usuário final."
   },
   {
-    name: "Profissional",
-    price: "R$ 39/mês",
-    tag: "Recomendado",
-    cta: "Experimentar 15 dias",
-    perks: [
-      "1 site + 5 e-mails",
-      "Tema premium incluído",
-      "Otimização de velocidade",
-      "Suporte prioritário",
-    ],
-  },
-  {
-    name: "Premium",
-    price: "R$ 79/mês",
-    tag: "Para crescer",
-    cta: "Falar com especialista",
-    perks: [
-      "1 site + 15 e-mails",
-      "Camada extra de segurança",
-      "Relatórios mensais",
-      "Sessão de ajustes mensais",
-    ],
+    icon: Award,
+    title: "Qualidade",
+    description: "Não fazemos sites, criamos presenças digitais que geram resultados."
   },
 ];
 
-// Depoimentos
+// Serviços oferecidos
+const services = [
+  {
+    title: "Criação de Sites",
+    description: "Sites profissionais e responsivos para qualquer tipo de negócio.",
+    features: ["Design personalizado", "Otimização para SEO", "Formulários de contato", "Integração com redes sociais"]
+  },
+  {
+    title: "Hospedagem WordPress",
+    description: "Hospedagem otimizada para WordPress com backup automático e SSL gratuito.",
+    features: ["Backup diário", "SSL gratuito", "Suporte técnico", "Painel simplificado"]
+  },
+  {
+    title: "Consultoria Digital",
+    description: "Acompanhamento personalizado para maximizar seus resultados online.",
+    features: ["Análise de mercado", "Estratégia digital", "Relatórios mensais", "Otimizações contínuas"]
+  }
+];
+
+// Depoimentos institucionais
 const testimonials = [
   {
-    name: "Carla – Psicóloga",
-    text: "Criei meu site em um dia e comecei a receber contatos já na primeira semana. Não precisei entender nada técnico.",
+    name: "Carla Silva",
+    role: "Psicóloga",
+    company: "Clínica Bem-Estar",
+    text: "O MeuWP transformou completamente minha presença digital. Em uma semana já estava recebendo pacientes pelo site.",
+    rating: 5
   },
   {
-    name: "Rafael – Advogado",
-    text: "MeuWP simplificou tudo. Eu só escolhi o modelo, enviei meu logo e pronto. Atendimento rápido pelo WhatsApp.",
+    name: "Rafael Costa",
+    role: "Advogado",
+    company: "Escritório Costa & Associados",
+    text: "Profissionalismo e simplicidade. Meu site ficou exatamente como eu queria, sem complicações técnicas.",
+    rating: 5
   },
   {
-    name: "Fernanda – Loja de Roupas",
-    text: "Fiz o teste grátis e decidi na hora. Hoje recebo orçamentos direto do site, 100% no celular.",
-  },
+    name: "Fernanda Santos",
+    role: "Proprietária",
+    company: "Boutique Elegance",
+    text: "Desde que criei meu site com o MeuWP, minhas vendas online aumentaram 300%. Recomendo para qualquer empresário.",
+    rating: 5
+  }
 ];
 
-// FAQ
-const faqs = [
+// Blog posts recentes
+const blogPosts = [
   {
-    q: "Preciso saber mexer em cPanel, DNS ou coisas técnicas?",
-    a: "Não. Nosso painel é feito para quem não é técnico. Você entra, escolhe o modelo e publica. Se precisar, a gente faz por você.",
+    title: "Como criar um site profissional em 5 minutos",
+    excerpt: "Guia completo para criar seu primeiro site sem conhecimento técnico.",
+    category: "Tutorial",
+    readTime: "3 min"
   },
   {
-    q: "Tem teste grátis?",
-    a: "Sim. Você pode testar por 7–15 dias sem cartão. Se gostar, segue com o plano. Se não, pode cancelar sem cobrança.",
+    title: "Por que seu negócio precisa de um site em 2024",
+    excerpt: "Descubra como um site pode transformar seus resultados de vendas.",
+    category: "Marketing",
+    readTime: "5 min"
   },
   {
-    q: "Vocês fazem migração do meu site atual?",
-    a: "Sim. Migramos gratuitamente sites WordPress, incluindo domínio, e-mails e SSL.",
-  },
-  {
-    q: "Posso ter e-mail profissional?",
-    a: "Sim. Mesmo no plano Básico você já tem e-mail com o seu domínio.",
-  },
+    title: "5 erros comuns ao criar um site sozinho",
+    excerpt: "Evite esses problemas que podem prejudicar sua presença digital.",
+    category: "Dicas",
+    readTime: "4 min"
+  }
 ];
 </script>
 
@@ -124,8 +150,8 @@ const faqs = [
     <header
       class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-slate-100"
     >
-      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-2">
+      <div id='home' class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-2" @click="scrollToSection('home')">
           <div
             class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold"
           >
@@ -134,19 +160,19 @@ const faqs = [
           <span class="font-semibold tracking-tight">MeuWP</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#modelos" class="hover:opacity-80">Modelos</a>
-          <a href="#planos" class="hover:opacity-80">Planos</a>
-          <a href="#como-funciona" class="hover:opacity-80">Como funciona</a>
-          <a href="#depoimentos" class="hover:opacity-80">Depoimentos</a>
+          <a href="#sobre" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer" @click="scrollToSection('sobre')">Sobre</a>
+          <a href="#servicos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer" @click="scrollToSection('servicos')">Serviços</a>
+          <a href="#depoimentos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer" @click="scrollToSection('depoimentos')">Depoimentos</a>
+          <a href="#blog" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer" @click="scrollToSection('blog')">Blog</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="rounded-2xl px-5 py-2 bg-slate-900 text-white">Entrar</button>
-          <button class="rounded-2xl px-5 py-2 bg-blue-600 text-white">Começar grátis</button>
+          <a href="/criar-site-gratis" class="rounded-2xl px-5 py-2 bg-slate-900 text-white hover:bg-slate-800 transition-colors">Criar site grátis</a>
+          <a href="/planos" class="rounded-2xl px-5 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors">Ver planos</a>
         </div>
       </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero Institucional -->
     <section class="relative overflow-hidden">
       <div
         class="max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-10 items-center"
@@ -155,177 +181,135 @@ const faqs = [
           <h1
             class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight"
           >
-            Hospedagem para quem
+            Transformamos ideias em
             <span
-              class="bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600"
-              >não entende</span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800"
+              >presenças digitais</span
             >
-            de hospedagem
           </h1>
           <p class="text-lg text-slate-600 max-w-prose">
-            Seu site WordPress pronto em minutos, sem cPanel e sem tecniquês.
-            Teste grátis, SSL e backup inclusos. Você cuida do seu negócio, a
-            gente cuida do seu site.
+            Somos especialistas em criar sites que geram resultados reais para empresas e profissionais. 
+            <strong>Simplicidade, qualidade e suporte</strong> são nossos pilares para transformar sua presença digital.
           </p>
           <div class="flex flex-col sm:flex-row gap-3">
-            <button
-              class="rounded-2xl px-6 py-4 text-base bg-blue-600 text-white"
+            <a
+              href="/onboarding"
+              class="rounded-2xl px-6 py-4 text-base bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors text-center"
             >
-              Começar meu teste grátis
-            </button>
-            <button
-              class="rounded-2xl px-6 py-4 text-base border border-slate-200"
+              🚀 Começar agora
+            </a>
+            <a
+              href="/sobre"
+              class="rounded-2xl px-6 py-4 text-base border border-slate-200 hover:bg-slate-50 transition-colors text-center"
             >
-              Ver modelos prontos
-            </button>
+              👥 Conheça nossa história
+            </a>
           </div>
 
-          <!-- Features -->
-          <div class="flex flex-wrap items-center gap-4 pt-3">
+          <!-- Estatísticas -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
             <div
-              v-for="(f, i) in features"
-              :key="i"
-              class="flex items-center gap-2 px-3 py-2 rounded-2xl bg-white shadow-sm border border-slate-100"
+              v-for="stat in stats"
+              :key="stat.label"
+              class="text-center"
             >
-              <component :is="f.icon" class="w-5 h-5" />
-              <span class="text-sm">{{ f.label }}</span>
+              <div class="text-2xl font-bold text-blue-600">{{ stat.number }}</div>
+              <div class="text-sm text-slate-600">{{ stat.label }}</div>
             </div>
-          </div>
-
-          <div class="flex items-center gap-3 pt-4 text-sm text-slate-500">
-            <Star class="w-4 h-4" />
-            <span>+120 sites publicados • 4.9/5 de satisfação</span>
           </div>
         </div>
 
-        <!-- Preview painel -->
+        <!-- Imagem institucional -->
         <div class="relative">
           <div
-            class="aspect-video rounded-3xl bg-white shadow-xl border border-slate-100 overflow-hidden"
+            class="aspect-video rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl border border-blue-200 overflow-hidden"
           >
-            <div class="p-6 grid gap-4">
-              <div class="h-10 w-48 rounded-2xl bg-slate-100" />
-              <div class="grid md:grid-cols-3 gap-4">
-                <button
-                  v-for="t in ['Entrar no WordPress', 'Criar e-mail', 'Pagar assinatura']"
-                  :key="t"
-                  class="rounded-2xl border border-slate-200 p-4 text-left hover:shadow-md transition-shadow"
-                >
-                  <div class="font-medium">{{ t }}</div>
-                  <div class="text-sm text-slate-500">
-                    1 clique • sem complicação
-                  </div>
-                </button>
-              </div>
+            <div class="p-8 text-center">
+              <Globe class="w-16 h-16 mx-auto mb-4 text-blue-600" />
+              <h3 class="text-xl font-semibold text-slate-800 mb-2">Presença Digital Completa</h3>
+              <p class="text-slate-600">Sites, hospedagem e suporte em um só lugar</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Como funciona -->
-    <section id="como-funciona" class="py-16 md:py-24">
+    <!-- Sobre a empresa -->
+    <section id="sobre" class="py-16 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4">
-        <div class="mb-10">
+        <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            Como funciona
+            Sobre o MeuWP
           </h2>
-          <p class="text-slate-600 mt-2">Três passos simples para seu site no ar.</p>
+          <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+            Nascemos com a missão de democratizar a presença digital. Acreditamos que toda empresa, 
+            independente do tamanho, merece ter um site profissional que gere resultados.
+          </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div
-            v-for="(s, i) in steps"
-            :key="i"
-            class="rounded-3xl border border-slate-200 p-6 hover:shadow-md transition-all"
-          >
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-2xl bg-slate-900 text-white grid place-items-center"
-              >
-                <component :is="s.icon" class="w-6 h-6" />
-              </div>
-              <div class="text-lg font-semibold">{{ s.title }}</div>
-            </div>
-            <p class="text-slate-600 mt-2">{{ s.text }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Modelos -->
-    <section id="modelos" class="py-16 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="mb-10 flex items-end justify-between">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-              Modelos por profissão
-            </h2>
-            <p class="text-slate-600 mt-2">
-              Comece com um visual pronto e personalize do seu jeito.
+            <h3 class="text-2xl font-bold mb-4">Nossa História</h3>
+            <p class="text-slate-600 mb-4">
+              Fundada em 2020, o MeuWP surgiu da frustração de ver pequenos empresários e profissionais 
+              liberais perdendo oportunidades por não terem uma presença digital adequada.
             </p>
+            <p class="text-slate-600 mb-6">
+              Hoje, já ajudamos mais de 500 empresas a estabelecerem sua presença online, 
+              sempre com foco na simplicidade e nos resultados.
+            </p>
+            <a href="/sobre" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              Conheça nossa história completa
+              <ArrowRight class="w-4 h-4" />
+            </a>
           </div>
-          <button class="rounded-2xl px-5 py-2 bg-blue-600 text-white">
-            Ver todos os modelos
-          </button>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
+          
+          <div class="grid grid-cols-2 gap-4">
           <div
-            v-for="name in ['Psicologia','Advocacia','Clínica de Estética','Pet Shop','Restaurante','Portfólio Autônomo']"
-            :key="name"
-            class="rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white hover:shadow-md transition-all"
+              v-for="value in values"
+              :key="value.title"
+              class="p-4 rounded-2xl border border-slate-200 hover:shadow-md transition-all"
           >
-            <div class="aspect-video rounded-t-3xl bg-slate-100" />
-            <div class="p-4">
-              <div class="font-medium">{{ name }}</div>
-              <div class="text-sm text-slate-500">
-                Pronto para publicar em minutos
-              </div>
+              <component :is="value.icon" class="w-8 h-8 text-blue-600 mb-3" />
+              <h4 class="font-semibold mb-2">{{ value.title }}</h4>
+              <p class="text-sm text-slate-600">{{ value.description }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Planos -->
-    <section id="planos" class="py-16 md:py-24">
-      <div class="max-w-6xl mx-auto px-4 text-center">
+    <!-- Serviços -->
+    <section id="servicos" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-          Planos simples, sem letrinha miúda
+            Nossos Serviços
         </h2>
-        <p class="text-slate-600 mt-2">
-          Teste grátis por 7–15 dias • Cancele quando quiser
-        </p>
+          <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+            Oferecemos soluções completas para sua presença digital, desde a criação do site 
+            até a hospedagem e suporte contínuo.
+          </p>
+        </div>
 
-        <div class="grid md:grid-cols-3 gap-6 mt-10">
+        <div class="grid md:grid-cols-3 gap-8">
           <div
-            v-for="(p, i) in plans"
-            :key="p.name"
-            class="rounded-3xl border border-slate-200 p-6"
-            :class="i === 1 ? 'ring-2 ring-slate-900' : ''"
+            v-for="service in services"
+            :key="service.title"
+            class="bg-white rounded-3xl border border-slate-200 p-6 hover:shadow-lg transition-all"
           >
-            <div class="flex items-center justify-between">
-              <div class="text-xl font-semibold">{{ p.name }}</div>
-              <span
-                class="text-xs px-3 py-1 rounded-full"
-                :class="i === 1 ? 'bg-slate-900 text-white' : 'bg-slate-100'"
-                >{{ p.tag }}</span
-              >
-            </div>
-            <div class="text-3xl font-extrabold mt-2">{{ p.price }}</div>
-            <ul class="space-y-3 mt-4">
+            <h3 class="text-xl font-bold mb-3">{{ service.title }}</h3>
+            <p class="text-slate-600 mb-4">{{ service.description }}</p>
+            <ul class="space-y-2">
               <li
-                v-for="perk in p.perks"
-                :key="perk"
-                class="flex items-center gap-2 text-slate-700"
+                v-for="feature in service.features"
+                :key="feature"
+                class="flex items-center gap-2 text-sm text-slate-700"
               >
-                <Check class="w-4 h-4" /> {{ perk }}
+                <Check class="w-4 h-4 text-green-600" />
+                {{ feature }}
               </li>
             </ul>
-            <button
-              class="mt-6 w-full rounded-2xl py-4 bg-blue-600 text-white"
-            >
-              {{ p.cta }}
-            </button>
           </div>
         </div>
       </div>
@@ -333,115 +317,204 @@ const faqs = [
 
     <!-- Depoimentos -->
     <section id="depoimentos" class="py-16 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-          Clientes que já simplificaram sua presença online
+            O que nossos clientes dizem
         </h2>
-        <p class="text-slate-600 mt-2">
-          Histórias reais de quem não queria complicação
+          <p class="text-slate-600 mt-4">
+            Histórias reais de transformação digital
         </p>
+        </div>
 
-        <div class="grid md:grid-cols-3 gap-6 mt-10">
+        <div class="grid md:grid-cols-3 gap-8">
           <div
-            v-for="t in testimonials"
-            :key="t.name"
-            class="rounded-3xl border border-slate-200 p-6 text-left"
+            v-for="testimonial in testimonials"
+            :key="testimonial.name"
+            class="bg-slate-50 rounded-3xl p-6 hover:shadow-md transition-all"
           >
-            <div class="flex items-center gap-3 mb-3">
-              <div
-                class="w-10 h-10 rounded-full bg-slate-900 text-white grid place-items-center"
-              >
-                <Quote class="w-4 h-4" />
+            <div class="flex items-center gap-1 mb-4">
+              <Star
+                v-for="i in testimonial.rating"
+                :key="i"
+                class="w-4 h-4 fill-yellow-400 text-yellow-400"
+              />
               </div>
-              <div class="text-base font-semibold">{{ t.name }}</div>
+            <p class="text-slate-700 mb-4">"{{ testimonial.text }}"</p>
+            <div>
+              <div class="font-semibold">{{ testimonial.name }}</div>
+              <div class="text-sm text-slate-600">{{ testimonial.role }} • {{ testimonial.company }}</div>
             </div>
-            <p class="text-slate-700">“{{ t.text }}”</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-16 md:py-24">
-      <div class="max-w-6xl mx-auto px-4 text-center">
+    <!-- Blog -->
+    <section id="blog" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-          Perguntas frequentes
+            Blog
         </h2>
-        <p class="text-slate-600 mt-2">Tire suas dúvidas antes de começar</p>
+          <p class="text-slate-600 mt-4">
+            Dicas, tutoriais e insights sobre presença digital
+          </p>
+        </div>
 
-        <div class="grid md:grid-cols-2 gap-6 mt-10 text-left">
-          <div
-            v-for="f in faqs"
-            :key="f.q"
-            class="rounded-3xl border border-slate-200 bg-white p-6"
+        <div class="grid md:grid-cols-3 gap-8">
+          <article
+            v-for="post in blogPosts"
+            :key="post.title"
+            class="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all"
           >
-            <div class="font-semibold">{{ f.q }}</div>
-            <div class="text-slate-600 mt-2">{{ f.a }}</div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">{{ post.category }}</span>
+                <span class="text-xs text-slate-500">{{ post.readTime }}</span>
+              </div>
+              <h3 class="font-bold mb-2">{{ post.title }}</h3>
+              <p class="text-slate-600 text-sm mb-4">{{ post.excerpt }}</p>
+              <a href="/blog" class="text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors">
+                Ler mais →
+              </a>
+            </div>
+          </article>
           </div>
+        
+        <div class="text-center mt-8">
+          <a href="/blog" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+            Ver todos os artigos
+            <ArrowRight class="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- CTA final -->
-    <section class="py-16 md:py-24 bg-gradient-to-b from-white to-slate-50">
+    <!-- CTA Institucional -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-          Pronto para ter seu site sem complicação?
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          Pronto para transformar sua presença digital?
         </h2>
-        <p class="text-lg text-slate-600 mt-3">
-          Teste grátis, sem cartão. Se gostar, continue. Se não, cancele sem
-          custo.
+        <p class="text-xl text-blue-100 mb-8">
+          Junte-se a centenas de empresas que já confiam no MeuWP
         </p>
-        <div class="flex items-center justify-center gap-3 mt-6">
-          <button class="rounded-2xl px-8 py-4 text-base bg-blue-600 text-white">
-            Começar meu teste grátis
-          </button>
-          <button class="rounded-2xl px-8 py-4 text-base border border-slate-200">
-            Falar no WhatsApp
-          </button>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/onboarding" class="rounded-2xl px-8 py-4 text-base bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-colors">
+            🚀 Começar grátis
+          </a>
+          <a href="/planos" class="rounded-2xl px-8 py-4 text-base border border-white text-white hover:bg-white hover:text-blue-600 transition-colors">
+            💼 Ver planos
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-100 py-10">
-      <div
-        class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6 items-start"
-      >
+    <footer class="border-t border-slate-100 py-10 bg-white">
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
         <div class="space-y-3">
           <div class="flex items-center gap-2">
-            <div
-              class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold"
-            >
+            <div class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">
               MW
             </div>
             <span class="font-semibold tracking-tight">MeuWP</span>
           </div>
-          <p class="text-slate-600 text-sm max-w-sm">
-            Hospedagem e criação de sites WordPress sem complicação. Você cuida
-            do seu negócio, a gente cuida do seu site.
+          <p class="text-slate-600 text-sm">
+            Transformando ideias em presenças digitais desde 2020.
           </p>
         </div>
-        <div class="grid grid-cols-2 gap-6 text-sm">
+        
+        <div>
+          <div class="font-semibold mb-3">Empresa</div>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li><a href="/sobre" class="hover:text-slate-900 transition-colors">Sobre nós</a></li>
+            <li><a href="/blog" class="hover:text-slate-900 transition-colors">Blog</a></li>
+            <li><a href="/contato" class="hover:text-slate-900 transition-colors">Contato</a></li>
+            <li><a href="/trabalhe-conosco" class="hover:text-slate-900 transition-colors">Carreiras</a></li>
+          </ul>
+        </div>
+        
           <div>
-            <div class="font-semibold mb-3">Links</div>
-            <ul class="space-y-2 text-slate-600">
-              <li><a href="#modelos" class="hover:opacity-80">Modelos</a></li>
-              <li><a href="#planos" class="hover:opacity-80">Planos</a></li>
-              <li><a href="#como-funciona" class="hover:opacity-80">Como funciona</a></li>
-              <li><a href="#depoimentos" class="hover:opacity-80">Depoimentos</a></li>
+          <div class="font-semibold mb-3">Serviços</div>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li><a href="/criar-site-gratis" class="hover:text-slate-900 transition-colors">Criar site grátis</a></li>
+            <li><a href="/planos" class="hover:text-slate-900 transition-colors">Planos</a></li>
+            <li><a href="/hospedagem" class="hover:text-slate-900 transition-colors">Hospedagem</a></li>
+            <li><a href="/consultoria" class="hover:text-slate-900 transition-colors">Consultoria</a></li>
             </ul>
           </div>
+        
           <div>
-            <div class="font-semibold mb-3">Contato</div>
-            <ul class="space-y-2 text-slate-600">
-              <li><a href="mailto:contato@meuwp.com" class="hover:opacity-80">contato@meuwp.com</a></li>
-              <li><a href="tel:+550000000000" class="hover:opacity-80">+55 00 0000-0000</a></li>
+          <div class="font-semibold mb-3">Suporte</div>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li><a href="/ajuda" class="hover:text-slate-900 transition-colors">Central de ajuda</a></li>
+            <li><a href="/tutoriais" class="hover:text-slate-900 transition-colors">Tutoriais</a></li>
+            <li><a href="mailto:contato@meuwp.com" class="hover:text-slate-900 transition-colors">contato@meuwp.com</a></li>
+            <li><a href="tel:+550000000000" class="hover:text-slate-900 transition-colors">+55 00 0000-0000</a></li>
             </ul>
+        </div>
+      </div>
+      
+      <div class="max-w-6xl mx-auto px-4 pt-8 mt-8 border-t border-slate-100">
+        <div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-600">
+          <p>&copy; 2024 MeuWP. Todos os direitos reservados.</p>
+          <div class="flex gap-4 mt-4 md:mt-0">
+            <a href="/privacidade" class="hover:text-slate-900 transition-colors">Política de Privacidade</a>
+            <a href="/termos" class="hover:text-slate-900 transition-colors">Termos de Uso</a>
           </div>
         </div>
       </div>
     </footer>
   </div>
 </template>
+
+<style scoped>
+/* Transições suaves para todos os elementos interativos */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effects melhorados */
+a:hover {
+  transform: translateY(-1px);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Transição suave para scroll */
+html {
+  scroll-behavior: auto;
+}
+
+/* Animação de fade-in para seções */
+section {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Melhor feedback visual para links do menu */
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+</style>
 
