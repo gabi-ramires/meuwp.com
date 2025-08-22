@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20.19.0' # Ajuste para a versão do Node.js que você usa
+        node-version: '20.19.0'
 
     - name: Install dependencies
       run: npm install
@@ -32,4 +32,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ # Pasta gerada pelo build do Vue
         server-dir: ./public_html/ # Pasta remota no servidor FTP
-        dangerous-clean-slate: true
+        dangerous-clean-slate: false
