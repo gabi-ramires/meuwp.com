@@ -377,7 +377,7 @@
     <footer class="footer py-4 text-center">
       <div class="container">
         <p>Especialista em sites para Profissionais Liberais 💼✨</p>
-        <p>© 2024 Gabriela Ramires - Todos os direitos reservados</p>
+        <p>© 2025 Gabriela Ramires - Todos os direitos reservados</p>
       </div>
     </footer>
   </div>

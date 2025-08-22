@@ -166,7 +166,7 @@ const blogPosts = [
           <a href="#blog" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer" @click="scrollToSection('blog')">Blog</a>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="/criar-site-gratis" class="rounded-2xl px-5 py-2 bg-slate-900 text-white hover:bg-slate-800 transition-colors">Criar site grátis</a>
+          <a href="/onboarding" class="rounded-2xl px-5 py-2 bg-slate-900 text-white hover:bg-slate-800 transition-colors">Criar site grátis</a>
           <a href="/planos" class="rounded-2xl px-5 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors">Ver planos</a>
         </div>
       </div>
@@ -459,7 +459,7 @@ const blogPosts = [
       
       <div class="max-w-6xl mx-auto px-4 pt-8 mt-8 border-t border-slate-100">
         <div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-600">
-          <p>&copy; 2024 MeuWP. Todos os direitos reservados.</p>
+          <p>&copy; 2025 MeuWP. Todos os direitos reservados.</p>
           <div class="flex gap-4 mt-4 md:mt-0">
             <a href="/privacidade" class="hover:text-slate-900 transition-colors">Política de Privacidade</a>
             <a href="/termos" class="hover:text-slate-900 transition-colors">Termos de Uso</a>
