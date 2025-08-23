@@ -57,7 +57,7 @@ const stats = [
 const values = [
   {
     icon: Heart,
-    title: "Simplicidade",
+    title: "Simplicidadeee",
     description: "Acreditamos que criar um site deve ser simples e acessível para todos."
   },
   {
