@@ -257,7 +257,7 @@ const blogPosts = [
           <div>
             <h3 class="text-2xl font-bold mb-4">Nossa História</h3>
             <p class="text-slate-600 mb-4">
-              Fundada em 2020, o MeuWP surgiu da frustração de ver pequenos empresários e profissionais
+              Fundada em 2025, o MeuWP surgiu da frustração de ver pequenos empresários e profissionais
               liberais perdendo oportunidades por não terem uma presença digital adequada.
             </p>
             <p class="text-slate-600 mb-6">
@@ -427,7 +427,7 @@ const blogPosts = [
             <span class="font-semibold tracking-tight">MeuWP</span>
           </div>
           <p class="text-slate-600 text-sm">
-            Transformando ideias em presenças digitais desde 2020.
+            Transformando ideias em presenças digitais desde 2025.
           </p>
         </div>
 
