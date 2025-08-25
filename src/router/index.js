@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomePage from '../pages/HomePage.vue'
+import HomePage from '../pages/home/HomePage.vue'
 import Consultoria from '../pages/consultoria/Consultoria.vue'
 import CriarSiteGratis from '../pages/criar-site-gratis/CriarSiteGratis.vue'
 import Onboarding from '../pages/onboarding/Onboarding.vue'
