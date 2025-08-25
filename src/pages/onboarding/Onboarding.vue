@@ -95,7 +95,7 @@ const continuar = () => {
             <div v-if="progresso === 1" class="space-y-4">
                 <div class="text-center mb-6">
                     <MousePointerClick class="w-10 h-10 mx-auto text-blue-600" />
-                    <h2 class="text-2xl font-bold mt-2">Crie seu site em 1 clique</h2>
+                    <h2 class="text-2xl font-bold mt-2">Crie seu site em 3 cliques</h2>
                     <p class="text-slate-600 mt-1 text-sm">
                         Basta criar sua conta e escolher um modelo pronto.
                     </p>
