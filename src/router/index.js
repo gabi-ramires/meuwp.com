@@ -5,6 +5,8 @@ import Consultoria from '../pages/consultoria/Consultoria.vue'
 import CriarSiteGratis from '../pages/criar-site-gratis/CriarSiteGratis.vue'
 import Onboarding from '../pages/onboarding/Onboarding.vue'
 import SobrePage from '../pages/sobre/SobrePage.vue'
+import TermosDeUsoPage from '../pages/termos/TermosDeUsoPage.vue'
+import PrivacidadePage from '../pages/privacidade/PrivacidadePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +35,16 @@ const router = createRouter({
       path: '/sobre',
       name: 'sobre',
       component: SobrePage
+    },
+    {
+      path: '/termos',
+      name: 'termos',
+      component: TermosDeUsoPage
+    },
+    {
+      path: '/privacidade',
+      name: 'privacidade',
+      component: PrivacidadePage
     }
   ],
 })
