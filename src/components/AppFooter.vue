@@ -4,7 +4,9 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const handleNavigation = (path) => {
-  router.push(path);
+  router.push(path).then(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 };
 </script>
 
