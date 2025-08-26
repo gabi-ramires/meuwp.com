@@ -6,69 +6,16 @@ import {
   Mail, // Ícone para contato
   Info // Ícone para informações gerais
 } from "lucide-vue-next";
+import AppHeader from '../../components/AppHeader.vue'; // Importar o novo componente
+import AppFooter from '../../components/AppFooter.vue'; // Importar o novo componente
 
-// Função para scroll suave personalizada
-const scrollToSection = (sectionId) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const targetPosition = element.offsetTop - 80;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 800;
-    let start = null;
 
-    function animation(currentTime) {
-      if (start === null) start = currentTime;
-      const timeElapsed = currentTime - start;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
-      t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
-  }
-};
 </script>
 
 <template>
   <div class="min-h-screen w-full bg-gradient-to-b from-white to-slate-50 text-slate-900">
-    <!-- Header (copiado de HomePage.vue) -->
-    <header
-      class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-slate-100">
-      <div id='home' class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2" @click="scrollToSection('home')">
-          <div class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">
-            MW
-          </div>
-          <span class="font-semibold tracking-tight">MeuWP</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="/#sobre" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-            @click="scrollToSection('sobre')">Sobre</a>
-          <a href="/#servicos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-            @click="scrollToSection('servicos')">Serviços</a>
-          <a href="/#depoimentos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-            @click="scrollToSection('depoimentos')">Depoimentos</a>
-          <a href="/#blog" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-            @click="scrollToSection('blog')">Blog</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="/onboarding"
-            class="rounded-2xl px-5 py-2 bg-slate-900 text-white hover:bg-slate-800 transition-colors">Criar site
-            grátis</a>
-          <a href="/planos" class="rounded-2xl px-5 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors">Ver
-            planos</a>
-        </div>
-      </div>
-    </header>
-
+    <!-- Header  -->
+    <AppHeader />
     <!-- Hero da página de Privacidade -->
     <section class="relative overflow-hidden py-20 md:py-32">
       <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
@@ -225,62 +172,7 @@ const scrollToSection = (sectionId) => {
     </section>
 
     <!-- Footer (copiado de HomePage.vue) -->
-    <footer class="border-t border-slate-100 py-10 bg-white">
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-        <div class="space-y-3">
-          <div class="flex items-center gap-2">
-            <div class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">
-              MW
-            </div>
-            <span class="font-semibold tracking-tight">MeuWP</span>
-          </div>
-          <p class="text-slate-600 text-sm">
-            Transformando ideias em presenças digitais desde 2025.
-          </p>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-3">Empresa</div>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li><a href="/sobre" class="hover:text-slate-900 transition-colors">Sobre nós</a></li>
-            <li><a href="/blog" class="hover:text-slate-900 transition-colors">Blog</a></li>
-            <li><a href="/contato" class="hover:text-slate-900 transition-colors">Contato</a></li>
-            <li><a href="/trabalhe-conosco" class="hover:text-slate-900 transition-colors">Carreiras</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-3">Serviços</div>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li><a href="/criar-site-gratis" class="hover:text-slate-900 transition-colors">Criar site grátis</a></li>
-            <li><a href="/planos" class="hover:text-slate-900 transition-colors">Planos</a></li>
-            <li><a href="/hospedagem" class="hover:text-slate-900 transition-colors">Hospedagem</a></li>
-            <li><a href="/consultoria" class="hover:text-slate-900 transition-colors">Consultoria</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="font-semibold mb-3">Suporte</div>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li><a href="/ajuda" class="hover:text-slate-900 transition-colors">Central de ajuda</a></li>
-            <li><a href="/tutoriais" class="hover:text-slate-900 transition-colors">Tutoriais</a></li>
-            <li><a href="mailto:contato@meuwp.com" class="hover:text-slate-900 transition-colors">contato@meuwp.com</a>
-            </li>
-            <li><a href="tel:+550000000000" class="hover:text-slate-900 transition-colors">+55 00 0000-0000</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="max-w-6xl mx-auto px-4 pt-8 mt-8 border-t border-slate-100">
-        <div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-600">
-          <p>&copy; 2025 MeuWP. Todos os direitos reservados.</p>
-          <div class="flex gap-4 mt-4 md:mt-0">
-            <a href="/privacidade" class="hover:text-slate-900 transition-colors">Política de Privacidade</a>
-            <a href="/termos" class="hover:text-slate-900 transition-colors">Termos de Uso</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <AppFooter />
   </div>
 </template>
 
