@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomePage from '../pages/home/HomePage.vue'
-import Consultoria from '../pages/consultoria/Consultoria.vue'
-import CriarSiteGratis from '../pages/criar-site-gratis/CriarSiteGratis.vue'
-import Onboarding from '../pages/onboarding/Onboarding.vue'
-import SobrePage from '../pages/sobre/SobrePage.vue'
-import TermosDeUsoPage from '../pages/termos/TermosDeUsoPage.vue'
-import PrivacidadePage from '../pages/privacidade/PrivacidadePage.vue'
-import PlansPage from '../pages/planos/PlansPage.vue' // Importar a nova página de Planos
+const HomePage = () => import('../pages/home/HomePage.vue')
+const Consultoria = () => import('../pages/consultoria/Consultoria.vue')
+const CriarSiteGratis = () => import('../pages/criar-site-gratis/CriarSiteGratis.vue')
+const Onboarding = () => import('../pages/onboarding/Onboarding.vue')
+const SobrePage = () => import('../pages/sobre/SobrePage.vue')
+const TermosDeUsoPage = () => import('../pages/termos/TermosDeUsoPage.vue')
+const PrivacidadePage = () => import('../pages/privacidade/PrivacidadePage.vue')
+const PlansPage = () => import('../pages/planos/PlansPage.vue') // Importar a nova página de Planos
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
