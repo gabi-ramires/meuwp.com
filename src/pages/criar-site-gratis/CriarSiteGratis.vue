@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import {
   Shield,
@@ -153,6 +153,25 @@ const faqs = [
     a: "Sim. Você pode alterar cores, textos e imagens facilmente pelo painel.",
   },
 ];
+
+// JSON-LD FAQ rich results
+onMounted(() => {
+  try {
+    const faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify(faqJsonLd)
+    document.head.appendChild(script)
+  } catch (e) {}
+})
 </script>
 
 <template>
@@ -192,14 +211,14 @@ const faqs = [
           <h1
             class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight"
           >
-            Seu site profissional
+            Criar site grátis
             <span
               class="bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600"
               >em 5 minutos</span
             >
           </h1>
           <p class="text-lg text-slate-600 max-w-prose">
-            Crie seu site hoje mesmo, sem complicação. Escolha um modelo, personalize e publique. 
+            Quer <strong>criar site grátis</strong> hoje mesmo, sem complicação? Escolha um modelo, personalize e publique. 
             <strong>Totalmente grátis para começar.</strong> Você cuida do seu negócio, a gente cuida do seu site.
           </p>
           <div class="flex flex-col sm:flex-row gap-3">
