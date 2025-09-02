@@ -69,8 +69,10 @@ const handleNavigation = (path, sectionId) => {
       }
     }
   } else {
-    // Navegar para uma nova página usando vue-router
-    router.push(path);
+    // Navegar para uma nova página usando vue-router e rolar para o topo
+    router.push(path).then(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 };
 </script>
@@ -88,7 +90,7 @@ const handleNavigation = (path, sectionId) => {
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="/#sobre" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
-          @click.prevent="handleNavigation('/#sobre', 'sobre')">Sobree</a>
+          @click.prevent="handleNavigation('/#sobre', 'sobre')">Sobre</a>
         <a href="/#servicos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
           @click.prevent="handleNavigation('/#servicos', 'servicos')">Serviços</a>
         <a href="/#depoimentos" class="hover:opacity-80 transition-opacity duration-200 cursor-pointer"

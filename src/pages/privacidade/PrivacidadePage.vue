@@ -163,7 +163,8 @@ import AppFooter from '../../components/AppFooter.vue'; // Importar o novo compo
             class="rounded-2xl px-8 py-4 text-base bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-colors">
             🚀 Começar grátis
           </a>
-          <a href="/planos"
+          <a href="#servicos"
+            @click="handleNavigation('/#servicos')"
             class="rounded-2xl px-8 py-4 text-base border border-white text-white hover:bg-white hover:text-blue-600 transition-colors">
             💼 Ver planos
           </a>
