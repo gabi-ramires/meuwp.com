@@ -210,7 +210,7 @@ const blogPosts = [
         <!-- Imagem institucional -->
         <div class="relative">
           <div class="aspect-video overflow-hidden">
-            <img src="./img/hero8.png" alt="Sites, hospedagem e suporte em um só lugar"
+            <img src="./img/hero8.webp" alt="Sites, hospedagem e suporte em um só lugar"
               class="w-full h-full object-cover" />
           </div>
         </div>

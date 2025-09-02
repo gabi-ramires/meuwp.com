@@ -118,7 +118,7 @@ const teamMembers = [
           </p>
         </div>
         <div class="aspect-video overflow-hidden rounded-3xl shadow-xl">
-            <img src="../home/img/hero8.png" alt="Missão MeuWP" class="w-full h-full object-cover" />
+            <img src="../home/img/hero8.webp" alt="Missão MeuWP" class="w-full h-full object-cover" />
         </div>
       </div>
     </section>
