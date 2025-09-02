@@ -181,7 +181,7 @@ onMounted(() => {
       class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-slate-100"
     >
       <div id='home' class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#home" class="flex items-center gap-2" @click="scrollToSection('home')">
+        <a href="#" class="flex items-center gap-2" @click="scrollToSection('home')">
           <div
             class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold"
           >
